@@ -24,7 +24,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 @SpringBootApplication
-@RegisterReflectionForBinding({DogAdoptionSuggestion.class})
+@RegisterReflectionForBinding(DogAdoptionSuggestion.class)
 public class DemoApplication {
 
     public static void main(String[] args) {
@@ -75,12 +75,12 @@ class RagController {
 
     @GetMapping("/content")
     String ragContent(@RequestParam String question) {
-        return this.responseSpec( question).content();
+        return this.responseSpec(question).content();
     }
 
     @GetMapping("/entity")
     DogAdoptionSuggestion ragEntity(@RequestParam String question) {
-        return this.responseSpec ( question).entity(DogAdoptionSuggestion.class);
+        return this.responseSpec(question).entity(DogAdoptionSuggestion.class);
     }
 
     private ChatClient.CallResponseSpec responseSpec(String question) {
@@ -94,7 +94,7 @@ class RagController {
         return this.ai
                 .prompt()
                 .system(system)
-                .user( question)
+                .user(question)
                 .call();
     }
 }
